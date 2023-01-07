@@ -1,20 +1,10 @@
 <script>
-  import Time from "./components/Time.svelte";
-  let testOne = {
-    name: "Rand",
-    openHour: 7,
-    openMinute: 30,
-    closedHour: 22,
-    closedMinute: 30,
-  };
-  let testTwo = {
-    name: "EBI",
-    openHour: 11,
-    openMinute: 0,
-    closedHour: 23,
-    closedMinute: 59,
-  };
+  import Clock from "./components/Clock.svelte";
+  let numImages = 3;
+  let image = Math.ceil(Math.random() * numImages);
+  document.body.background = `../images/vandy${image}.jpg`;
 </script>
 
-<Time {...testOne} />
-<Time {...testTwo} />
+<html lang="en-us">
+  <Clock />
+</html>

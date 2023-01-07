@@ -1,13 +1,24 @@
 <script>
+  import { onMount } from "svelte";
   export let name;
   export let openHour;
   export let closedHour;
   export let openMinute;
   export let closedMinute;
-  let d = new Date();
-  d = new Date();
-  let hour = d.getHours();
-  let minutes = d.getMinutes();
+  let time = new Date();
+  $: hour = time.getHours();
+  $: minutes = time.getMinutes();
+  $: seconds = time.getSeconds();
+
+  onMount(() => {
+    const interval = setInterval(() => {
+      time = new Date();
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  });
   const checkTime = () => {
     return (
       (hour > openHour || (hour == openHour && minutes >= openMinute)) &&
@@ -31,3 +42,6 @@
   {padTime(hour, minutes)}.
   {name} is {checkTime() ? "open" : "closed"}.
 </p>
+
+<style>
+</style>
