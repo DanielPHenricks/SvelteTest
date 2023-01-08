@@ -1,3 +1,4 @@
+<!-- This updates a clock using the "$" operator. -->
 <script>
   import { onMount } from "svelte";
   import "../css/style.css";
