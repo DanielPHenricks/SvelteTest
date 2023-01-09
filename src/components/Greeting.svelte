@@ -1,25 +1,49 @@
 <!-- This component is a greeting displayed below the clock.
-Todo: add a personal name. -->
+Todo: style the input and button. -->
 <script>
+
+  import { spring } from 'svelte/motion';
   let time = new Date();
   let hours = time.getHours();
   let phrase = "Good ";
+  
   switch (hours) {
     case hours >= 6 && hours <= 12:
-      phrase += "morning!";
+      phrase += "morning, ";
       break;
     case hours <= 18:
-      phrase += "afternoon!";
+      phrase += "afternoon, ";
       break;
     default:
-      phrase += "evening!";
+      phrase += "evening, ";
       break;
+  }
+
+  let name = localStorage.getItem("nameOfUser"); //save info for next session
+  let show = (name == null);
+  let defaultGreeting = "please enter your name.";
+  if(name == null){
+    phrase += defaultGreeting;
+  }
+	const isSeen = spring(1);
+	$: isSeen.set(show ? 1 : 0);  //like a true or false value, with 0 being falsy
+  const updateNameInput = () => {
+    isSeen.set(0);
+        localStorage.setItem("nameOfUser", document.getElementById("nameInput").value);
+        phrase = phrase.substring(0, phrase.indexOf(defaultGreeting));
+        phrase += document.getElementById("nameInput").value;
   }
 </script>
 
 <div id="container">
   <div id="greeting">
     <p>{phrase}</p>
+    <div style="max-height: 4vh">
+      <input type="text" id="nameInput" style="opacity: {$isSeen}">
+      <button style="opacity: {$isSeen}" on:click={() => {
+        updateNameInput();
+      }}>Save name</button>
+      </div>
   </div>
 </div>
 
@@ -35,8 +59,6 @@ Todo: add a personal name. -->
   #greeting {
     font: 20pt Roboto, Century Gothic;
     color: #fbf9f9;
-    -moz-text-shadow: 0 0 10px rgba(0, 0, 0, 1);
-    -webkit-text-shadow: 0 0 10px rgba(0, 0, 0, 1);
     text-shadow: 0 0 10px rgba(0, 0, 0, 1);
   }
 </style>
