@@ -5,33 +5,31 @@ Todo: style the input and button. -->
   import { spring } from 'svelte/motion';
   let time = new Date();
   let hours = time.getHours();
-  let phrase = "Good ";
-  
-  switch (hours) {
-    case hours >= 6 && hours <= 12:
-      phrase += "morning, ";
-      break;
-    case hours <= 18:
-      phrase += "afternoon, ";
-      break;
-    default:
-      phrase += "evening, ";
-      break;
-  }
-
-  let name = localStorage.getItem("nameOfUser"); //save info for next session
+  let name = localStorage.getItem("name"); //save info for next session
   let show = (name == null);
-  let defaultGreeting = "please enter your name.";
+  let defaultGreeting = "Please enter your name.";
+  let phrase = "Good ";
   if(name == null){
-    phrase += defaultGreeting;
+    phrase = defaultGreeting;
   }
-	const isSeen = spring(1);
+  else {
+    if(hours >= 6 && hours <= 12){
+      phrase += "morning, ";
+    }
+    else if(hours <= 18){
+      phrase += "afternoon, ";
+    }
+    else {
+      phrase += "evening";
+    }
+    phrase += name;
+  }
+	const isSeen = spring(0);
 	$: isSeen.set(show ? 1 : 0);  //like a true or false value, with 0 being falsy
   const updateNameInput = () => {
     isSeen.set(0);
-        localStorage.setItem("nameOfUser", document.getElementById("nameInput").value);
-        phrase = phrase.substring(0, phrase.indexOf(defaultGreeting));
-        phrase += document.getElementById("nameInput").value;
+    localStorage.setItem("name", document.getElementById("nameInput").value);
+    phrase = "Name has been saved.";
   }
 </script>
 
