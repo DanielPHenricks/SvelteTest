@@ -5,31 +5,36 @@ Todo: style the input and button. -->
   import { spring } from 'svelte/motion';
   let time = new Date();
   let hours = time.getHours();
-  let name = localStorage.getItem("name"); //save info for next session
+  let name = localStorage.name;
+  let phrase;
   let show = (name == null);
-  let defaultGreeting = "Please enter your name.";
-  let phrase = "Good ";
-  if(name == null){
-    phrase = defaultGreeting;
-  }
-  else {
-    if(hours >= 6 && hours <= 12){
-      phrase += "morning, ";
-    }
-    else if(hours <= 18){
-      phrase += "afternoon, ";
+  let isSeen = spring(0);
+	$: isSeen.set(show ? 1 : 0);  //like a true or false value, with 0 being falsy
+  const setPhrase = () => {
+    let defaultGreeting = "Please enter your name.";
+    if(name == null){
+      phrase = defaultGreeting;
     }
     else {
-      phrase += "evening";
+      phrase = "Good "
+      if(hours >= 6 && hours <= 12){
+        phrase += "morning, ";
+      }
+      else if(hours <= 18){
+        phrase += "afternoon, ";
+      }
+      else {
+        phrase += "evening";
+      }
+      phrase += name;
+      show = false;
     }
-    phrase += name;
   }
-	const isSeen = spring(0);
-	$: isSeen.set(show ? 1 : 0);  //like a true or false value, with 0 being falsy
-  const updateNameInput = () => {
-    isSeen.set(0);
-    localStorage.setItem("name", document.getElementById("nameInput").value);
-    phrase = "Name has been saved.";
+  setPhrase();
+  const setName = () => {
+    name = document.getElementById("nameInput").value;
+    localStorage.name = name;
+    setPhrase();
   }
 </script>
 
@@ -38,9 +43,7 @@ Todo: style the input and button. -->
     <p>{phrase}</p>
     <div style="max-height: 4vh">
       <input type="text" id="nameInput" style="opacity: {$isSeen}">
-      <button style="opacity: {$isSeen}" on:click={() => {
-        updateNameInput();
-      }}>Save name</button>
+      <button style="opacity: {$isSeen}" on:click={() => setName()}>Save name</button>
       </div>
   </div>
 </div>
