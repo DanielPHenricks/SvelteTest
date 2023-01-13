@@ -41,7 +41,7 @@ Todo: style the input and button. -->
 <div id="container">
   <div id="greeting">
     <p>{phrase}</p>
-    <div style="max-height: 4vh">
+    <div style="max-height: 1vh">
       <input type="text" id="nameInput" style="opacity: {$isSeen};">
       <button style="opacity: {$isSeen}" id="submitButton" on:click={() => setName()}>Save name</button>
       </div>
