@@ -24,7 +24,7 @@ Todo: style the input and button. -->
         phrase += "afternoon, ";
       }
       else {
-        phrase += "evening";
+        phrase += "evening, ";
       }
       phrase += name;
       show = false;
@@ -42,8 +42,8 @@ Todo: style the input and button. -->
   <div id="greeting">
     <p>{phrase}</p>
     <div style="max-height: 4vh">
-      <input type="text" id="nameInput" style="opacity: {$isSeen}">
-      <button style="opacity: {$isSeen}" on:click={() => setName()}>Save name</button>
+      <input type="text" id="nameInput" style="opacity: {$isSeen};">
+      <button style="opacity: {$isSeen}" id="submitButton" on:click={() => setName()}>Save name</button>
       </div>
   </div>
 </div>
