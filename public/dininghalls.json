@@ -1,0 +1,25 @@
+{
+    "diningHalls": [
+        {
+            "name": "The Commons",
+            "openWeekday": 7,
+            "closedWeekday": 20,
+            "openWeekend": 9,
+            "closedWeekend": 20
+        },
+        {
+            "name": "Rothschild",
+            "openWeekday": 7,
+            "closedWeekday": 20,
+            "openWeekend": 9,
+            "closedWeekend": 20
+        },
+        {
+            "name": "EBI",
+            "openWeekday": 7,
+            "closedWeekday": 20,
+            "openWeekend": 9,
+            "closedWeekend": 20
+        }
+    ]
+}

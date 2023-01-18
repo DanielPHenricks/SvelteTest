@@ -1,3 +1,8 @@
+<script>
+    import DiningHall from "./DiningHall.svelte";
+</script>
+
+<!-- This component is for the table containing upcoming schedules. -->
 <div class="supporting">
     <div class="container">
         <div class="row">
@@ -19,25 +24,17 @@
                     </thead>
 
                     <tbody>
-                        <tr id="link1">
-                            <td><img id="open1" src="" /></td>
-                            <td>Rand Dining Center</td>
-                            <td id="1" />
+                        <tr>
+                            <DiningHall name="Roth" />
                         </tr>
-                        <tr id="link2">
-                            <td><img id="open2" src="" /></td>
-                            <td>EBI</td>
-                            <td id="2" />
+                        <tr>
+                            <DiningHall name="EBI" />
                         </tr>
-                        <tr id="link3">
-                            <td><img id="open3" src="" /></td>
-                            <td>The Commons</td>
-                            <td id="3" />
+                        <tr>
+                            <DiningHall name="Commons" />
                         </tr>
-                        <tr id="link4">
-                            <td><img id="open4" src="" /></td>
-                            <td>The Pub</td>
-                            <td id="4" />
+                        <tr>
+                            <DiningHall name="Rand" />
                         </tr>
                     </tbody>
                 </table>
