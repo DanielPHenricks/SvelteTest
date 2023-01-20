@@ -25,13 +25,13 @@
 
                     <tbody>
                         <tr>
-                            <DiningHall name="Roth" />
+                            <DiningHall name="Rothschild" />
                         </tr>
                         <tr>
                             <DiningHall name="EBI" />
                         </tr>
                         <tr>
-                            <DiningHall name="Commons" />
+                            <DiningHall name="The Commons" />
                         </tr>
                         <tr>
                             <DiningHall name="Rand" />

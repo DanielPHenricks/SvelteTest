@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-copy": "^3.4.0",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "fs": "^0.0.1-security",
     "sirv-cli": "^2.0.0"
   }
 }
