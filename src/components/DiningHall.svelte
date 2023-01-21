@@ -1,9 +1,6 @@
 <script>
     export let name;
     export let isOpen;
-    const date = new Date();
-    const isWeekday = date.getDay() > 0 && date.getDay() < 6;
-    const hour = date.getHours();
     $: link = isOpen ? `../images/open.png` : `../images/closed.png`;
     let data;
 

@@ -1,5 +1,52 @@
 <script>
-    import DiningHall from "./DiningHall.svelte";
+    //for each entry in json, create a tr and add the title. check if it is open as well
+
+    //todo: import this
+    let dininghalls = [
+        {
+            name: "The Commons",
+            openWeekday: 7,
+            closedWeekday: 20,
+            openWeekend: 9,
+            closedWeekend: 20,
+        },
+        {
+            name: "Rothschild",
+            openWeekday: 7,
+            closedWeekday: 20,
+            openWeekend: 9,
+            closedWeekend: 20,
+        },
+        {
+            name: "EBI",
+            openWeekday: 7,
+            closedWeekday: 20,
+            openWeekend: 9,
+            closedWeekend: 20,
+        },
+        {
+            name: "Rand",
+            openWeekday: 7,
+            closedWeekday: 15,
+            openWeekend: 0,
+            closedWeekend: 0,
+        },
+    ];
+
+    //end todo
+
+    const date = new Date();
+    const isWeekday = date.getDay() > 0 && date.getDay() < 6;
+    const hour = date.getHours();
+    const isOpen = (hall) => {
+        let open = false;
+        if (isWeekday) {
+            open = hour >= hall.openWeekday && hour < hall.closedWeekday;
+        } else {
+            open = hour >= hall.openWeekend && hour < hall.closedWeekend;
+        }
+        return open ? `../images/open.png` : `../images/closed.png`;
+    };
 </script>
 
 <!-- This component is for the table containing upcoming schedules. -->
@@ -23,19 +70,20 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr>
-                            <DiningHall name="Rothschild" />
-                        </tr>
-                        <tr>
-                            <DiningHall name="EBI" />
-                        </tr>
-                        <tr>
-                            <DiningHall name="The Commons" />
-                        </tr>
-                        <tr>
-                            <DiningHall name="Rand" />
-                        </tr>
+                    <tbody id="table">
+                        {#each dininghalls as hall}
+                            <tr>
+                                <td
+                                    ><img
+                                        id="open1"
+                                        src={isOpen(hall)}
+                                        alt="img"
+                                    /></td
+                                >
+                                <td>{hall.name}</td>
+                                <td />
+                            </tr>
+                        {/each}
                     </tbody>
                 </table>
             </div>
