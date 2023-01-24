@@ -1,16 +1,10 @@
 <script>
-    import dininghalls from "../dininghalls.json";
-    const date = new Date();
-    const day = date.getDay();
-    const hour = date.getHours();
-    const isOpen = (hall) => {
-        let open = false;
-        open = hour >= hall.openHour[day] && hour < hall.closedHour[day];
-        return open ? `../images/open.png` : `../images/closed.png`;
-    };
+    import games from "../games.json";
+    const time = new Date();
+    const date = time.getDate();
+    const hour = time.getHours();
 </script>
 
-<!-- This component is for the table containing upcoming schedules. -->
 <table id="rounded-corner" summary="Dining">
     <thead>
         <tr>
@@ -21,17 +15,22 @@
                     height="20"
                     width="20"
                     alt="Food"
-                /> Food
+                /> Sports
             </th>
             <th scope="col" class="rounded-q4" />
         </tr>
     </thead>
 
     <tbody id="table">
-        {#each dininghalls as hall}
+        {#each games as game}
             <tr>
-                <td><img id="open1" src={isOpen(hall)} alt="img" /></td>
-                <td>{hall.name}</td>
+                <td>{game.date}</td>
+                <td>{game.time}</td>
+                <td
+                    >{game.sport}
+                    {game.isHomeGame ? "vs" : "at"}
+                    {game.opponent}</td
+                >
                 <td />
             </tr>
         {/each}

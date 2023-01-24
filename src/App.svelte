@@ -4,6 +4,7 @@
   import ButtonGroup from "./components/ButtonGroup.svelte";
   import Greeting from "./components/Greeting.svelte";
   import DiningHallTable from "./components/DiningHallTable.svelte";
+  import Tables from "./components/Tables.svelte";
   const numImages = 3;
   let image = Math.ceil(Math.random() * numImages);
   document.body.background = `../images/vandy${image}.jpg`;
@@ -13,5 +14,5 @@
   <Clock />
   <Greeting />
   <ButtonGroup />
-  <DiningHallTable />
+  <Tables />
 </html>
