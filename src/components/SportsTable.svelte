@@ -14,7 +14,7 @@
                     src="../images/food.png"
                     height="20"
                     width="20"
-                    alt="Food"
+                    alt="Sports"
                 /> Sports
             </th>
             <th scope="col" class="rounded-q4" />
@@ -22,6 +22,11 @@
     </thead>
 
     <tbody id="table">
+        <tr>
+            <td><b>Date</b></td>
+            <td><b>Time</b></td>
+            <td><b>Opponent</b></td>
+        </tr>
         {#each games as game}
             <tr>
                 <td>{game.date}</td>
@@ -31,13 +36,18 @@
                     {game.isHomeGame ? "vs" : "at"}
                     {game.opponent}</td
                 >
-                <td />
             </tr>
         {/each}
     </tbody>
 </table>
 
 <style type="text/css">
+    tbody td:first-child {
+        width: 60px;
+    }
+    tbody td:nth-child(2) {
+        width: 70px;
+    }
     ::-webkit-scrollbar {
         width: 10px;
         height: 3px;

@@ -55,4 +55,24 @@
     ::-webkit-scrollbar-thumb:active {
         background: #ffffff;
     }
+
+    tbody td:first-child {
+        width: 0px;
+    }
+
+    tbody td:nth-child(2) {
+        width: 200px;
+    }
+
+    tbody td:nth-child(3) {
+        width: 160px;
+    }
+
+    thead th:first-child {
+        border-top-left-radius: 10px;
+    }
+
+    thead th:nth-child(3) {
+        border-top-right-radius: 10px;
+    }
 </style>

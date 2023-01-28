@@ -85,31 +85,6 @@ thead th:nth-child(2) {
     width: 140px;
 }
 
-tbody td:first-child {
-    width: 0px;
-    /* 140px + 16px scrollbar width */
-}
-
-tbody td:nth-child(2) {
-    width: 200px;
-}
-
-tbody td:nth-child(3) {
-    width: 160px;
-}
-
-tfoot th:first-child {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-thead th:first-child {
-    border-top-left-radius: 10px;
-}
-
-thead th:nth-child(3) {
-    border-top-right-radius: 10px;
-}
 
 .data .col-xs-3 {
     top: -45px;
